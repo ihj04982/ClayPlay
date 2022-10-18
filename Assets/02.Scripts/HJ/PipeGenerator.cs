@@ -27,23 +27,11 @@ public class PipeGenerator : MonoBehaviour
     {
         if (points.Count > 2)
         {
-            
-            // Vector3 pos = points[0] * 1.05f;
-            // points.Add(pos);
-
-
-            // remove any colinear points, as creating elbows between them
-            // would result in a torus of infinite radius, which is generally
-            // frowned upon. also, it helps in keeping the triangle count low. :)
-            //RemoveColinearPoints();
-
-            // add mesh filter if not present
             MeshFilter currentMeshFilter = GetComponent<MeshFilter>();
             MeshFilter mf = currentMeshFilter != null ? currentMeshFilter : gameObject.AddComponent<MeshFilter>();
             Mesh mesh = GenerateMesh();
             mf.mesh = mesh;
 
-            // add mesh renderer if not present
             MeshRenderer currentMeshRenderer = GetComponent<MeshRenderer>();
             MeshRenderer mr = currentMeshRenderer != null ? currentMeshRenderer : gameObject.AddComponent<MeshRenderer>();
             mr.materials = new Material[1] { pipeMaterial };
@@ -69,22 +57,14 @@ public class PipeGenerator : MonoBehaviour
 
             if (i > 0 && generateElbows)
             {
-                // leave space for the elbow that will connect to the previous
-                // segment, except on the very first segment
                 initialPoint = initialPoint + direction * elbowRadius;
-
             }
 
             if (i < points.Count - 1 && generateElbows)
             {
-                // leave space for the elbow that will connect to the next
-                // segment, except on the last segment
                 endPoint = endPoint - direction * elbowRadius;
-
             }
 
-            // generate two circles with "pipeSegments" sides each and then
-            // connect them to make the cylinder
             GenerateCircleAtPoint(vertices, normals, initialPoint, direction);
             GenerateCircleAtPoint(vertices, normals, endPoint, direction);
             MakeCylinderTriangles(triangles, i);
@@ -181,8 +161,6 @@ public class PipeGenerator : MonoBehaviour
     }
     void GenerateCircleAtPoint(List<Vector3> vertices, List<Vector3> normals, Vector3 center, Vector3 direction)
     {
-        // 'direction' is the normal to the plane that contains the circle
-
         // define a couple of utility variables to build circles
         float twoPi = Mathf.PI * 2;
         float radiansPerSegment = twoPi / pipeSegments;
@@ -199,7 +177,6 @@ public class PipeGenerator : MonoBehaviour
         {
             yAxis = Vector3.left;
         }
-
 
         // build left-hand coordinate system, with orthogonal and normalized axes
         Vector3.OrthoNormalize(ref direction, ref xAxis, ref yAxis);
@@ -319,6 +296,5 @@ public class PipeGenerator : MonoBehaviour
             triangles.Add(secondCircleCenter);
         }
     }
-
 }
 

@@ -5,9 +5,7 @@ using Photon.Realtime;
 using System;
 using System.Collections;
 using UnityEngine;
-//
-//For handling local objects and sending data over the network
-//
+
 namespace Chiligames.MetaAvatarsPun
 {
     public class PlayerManager : MonoBehaviourPunCallbacks

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
-//[RequireComponent(typeof(MeshCollider))]
+
 public class MeshDeformer : MonoBehaviour
 {
 
@@ -20,8 +20,8 @@ public class MeshDeformer : MonoBehaviour
     {
         handleInput = GameObject.Find("ClayManager").GetComponent<NewHandleInput>();
         GetMesh();
-
     }
+
     public void GetMesh()
     {
         deformingMesh = GetComponent<MeshFilter>().mesh;
@@ -38,7 +38,6 @@ public class MeshDeformer : MonoBehaviour
     {
         if (deformingMesh != null)
         {
-            //uniformScale = transform.localScale.x;
             for (int i = 0; i < displacedVertices.Length; i++)
             {
                 UpdateVertex(i);
@@ -53,7 +52,6 @@ public class MeshDeformer : MonoBehaviour
     {
         Vector3 velocity = vertexVelocities[i];
         Vector3 displacement = displacedVertices[i] - originalVertices[i];
-        //displacement *= uniformScale;
 
         velocity -= displacement * springForce * Time.deltaTime;
         velocity *= 1f - damping * Time.deltaTime;
@@ -65,11 +63,9 @@ public class MeshDeformer : MonoBehaviour
 
     public void AddDeformingForce(Vector3 point, float force)
     {
-        //point = transform.InverseTransformPoint(point);
         for (int i = 0; i < displacedVertices.Length; i++)
         {
             AddForceToVertex(i, point, force);
-            //Debug.Log(point);
         }
     }
 
@@ -80,14 +76,7 @@ public class MeshDeformer : MonoBehaviour
             pointToVertex = (displacedVertices[i] - point);
             float attenuatedForce = force / (pointToVertex.sqrMagnitude);
             float velocity = attenuatedForce * Time.deltaTime;
-            if (handleInput.isSwell== true)
-            {
-                vertexVelocities[i] += pointToVertex.normalized * 0.15f * velocity;
-            }
-            else
-            {
-                vertexVelocities[i] += pointToVertex.normalized * 0.15f* velocity;
-            }
+            vertexVelocities[i] += pointToVertex.normalized * 0.15f* velocity;
         }
     }
 }
