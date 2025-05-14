@@ -49,7 +49,7 @@ Clay Play는 가상 작업 공간에서 사용자의 상상력을 자유롭게 �
 
 ## 🔗 관련 링크
 
-- [GitHub 저장소](https://github.com/ihj04982/ClayPlay)
+- [notion에서 자세히 보기]([https://github.com/ihj04982/ClayPlay](https://heejeonglim.notion.site/CLAY-PLAY-5f8fdda7ee474cc0b72e96a69398216e?pvs=4))
 
 ## 🎯 향후 개선 사항
 
