@@ -49,7 +49,7 @@ Clay Play는 가상 작업 공간에서 사용자의 상상력을 자유롭게 �
 
 ## 🔗 관련 링크
 
-- [notion에서 자세히 보기](https://heejeonglim.notion.site/CLAY-PLAY-5f8fdda7ee474cc0b72e96a69398216e?pvs=4)
+- [notion에서 자세히 보기]([https://heejeonglim.notion.site/CLAY-PLAY-5f8fdda7ee474cc0b72e96a69398216e?pvs=4](https://www.notion.so/heejeonglim/CLAY-PLAY-7102bfd712d646e0b0beed28dc88b7e1?source=copy_link))
 
 ## 🎯 향후 개선 사항
 
